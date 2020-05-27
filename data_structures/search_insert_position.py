@@ -4,6 +4,12 @@ from typing import List
 class SearchInsertPosition:
 
     def search_insert_positon(self, nums: List[int], target: int):
+        """
+        Approach: Binary Search
+        :param nums:
+        :param target:
+        :return:
+        """
 
         if len(nums) == 0:
             return 0
