@@ -33,8 +33,12 @@ class LastWordLength:
                 return length
         return length
 
+    def length_of_last_word__(self, string: str) -> int:
+        return 0 if not string or string.isspace() else len(string.split()[-1])
+
 
 if __name__ == "__main__":
     word_length = LastWordLength()
     print(word_length.length_of_last_word('Hello Shiva Kumar Nadicherra '))
     print(word_length.length_of_last_word_('Hello Shiva Kumar Nadicherra '))
+    print(word_length.length_of_last_word__('Hello Shiva Kumar Nadicherra '))
