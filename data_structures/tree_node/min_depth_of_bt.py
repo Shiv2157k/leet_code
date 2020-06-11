@@ -14,7 +14,9 @@ class MinimumDepth:
 
     def get_min_depth(self, root: TreeNode) -> int:
         """
-        Approach: Recursion using DFS
+        Approach: Recursion using DFS.
+        Time Complexity: O(n)
+        Space Complexity: O(log n)
         :param root:
         :return:
         """
@@ -34,6 +36,8 @@ class MinimumDepth:
     def get_min_depth_(self, root: TreeNode) -> int:
         """
         Approach: Iterative using DFS
+        Time Complexity: O(n)
+        Space Complexity: O(n)
         :param root:
         :return:
         """
@@ -45,7 +49,6 @@ class MinimumDepth:
 
         while stack:
             depth, root = stack.pop()
-            min_depth = min(depth, min_depth)
             nodes = [root.left, root.right]
             if not any(nodes):
                 min_depth = min(depth, min_depth)
@@ -53,9 +56,11 @@ class MinimumDepth:
                 stack.append((depth + 1, node))
         return min_depth
 
-    def get_min_depth(self, root: TreeNode) -> int:
+    def get_min_depth__(self, root: TreeNode) -> int:
         """
         Approach: Iterative using BFS
+        Time Complexity: O(n)
+        Space Complexity: O(n)
         :param root:
         :return:
         """
