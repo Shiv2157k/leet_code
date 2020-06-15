@@ -16,11 +16,16 @@ class RomanConverter:
     ]
 
     def convert(self, number: int) -> str:
-
+        """
+        Approach: Greedy
+        Time Complexity: O(1)
+        Space Complexity: O(1)
+        :param number:
+        :return:
+        """
         output = []
 
         for value, roman in self.__mapper:
-
             if number == 0:
                 break
             count, number = number // value, number % value
