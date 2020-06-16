@@ -70,11 +70,39 @@ class ThreeSum:
                     right -= 1
         return output
 
+    def get_closest(self, nums: List[int], target: int) -> int:
+        """
+        Approach: Two Pointers
+        Time Complexity: O(n^2)
+        Space Complexity: O(n^2)
+        :param nums:
+        :param target:
+        :return:
+        """
+
+        if not nums:
+            return 0
+        length, closest = len(nums), nums[0] + nums[1] + nums[2]
+        for i in range(length - 2):
+            left, right = i + 1, length - 1
+            while left < right:
+                result = nums[i] + nums[left] + nums[right]
+                if abs(target - result) < abs(target - closest):
+                    closest = result
+                if result < target:
+                    left += 1
+                elif result > target:
+                    right -= 1
+                else:
+                    return target
+        return closest
+
 
 if __name__ == "__main__":
     three_sum = ThreeSum()
     print(three_sum.get_list_([-1, 0, 1, 2, -1, -4]))
     print(three_sum.get_list([-1, 0, 1, 2, -1, -4]))
+    print(three_sum.get_closest([-1, 2, 1, -4], 1))
 
 
 
