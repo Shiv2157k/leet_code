@@ -36,7 +36,7 @@ class Permutation:
             nums[left + 1:] = nums[left + 1:][::-1]
             return nums
 
-    def get_all_unique(self, nums: List[int]) -> List[List[int]]:
+    def get_all_unique_with_duplicates(self, nums: List[int]) -> List[List[int]]:
         """
         Approach: Back tracking (Recursion)
         :param nums:
@@ -60,6 +60,19 @@ class Permutation:
         back_track(nums, [], unique)
         return unique
 
+    def get_all_from_distinct(self, nums: List[int]) -> List[List[int]]:
+
+        def back_track(nums, path, permutations):
+
+            if not nums:
+                permutations.append(path)
+            for i in range(len(nums)):
+                back_track(nums[:i] + nums[i + 1:], path + [nums[i]], permutations)
+
+        permutations = []
+        back_track(nums, [], permutations)
+        return permutations
+
 
 if __name__ == "__main__":
 
@@ -67,4 +80,5 @@ if __name__ == "__main__":
     print(permutation.get_next([9, 6, 5, 4, 3, 2, 1]))
     print(permutation.get_next([9, 6, 5, 4, 7, 2, 1]))
     print(permutation.get_next([1, 2, 4, 5, 7, 8, 9]))
-    print(permutation.get_all_unique([1, 2, 1]))
+    print(permutation.get_all_unique_with_duplicates([1, 2, 1]))
+    print(permutation.get_all_from_distinct([6, 7, 9]))
