@@ -3,7 +3,7 @@ from typing import List
 
 class Permutation:
 
-    def get_next_permutation(self, nums: List[int]) -> List[int]:
+    def get_next(self, nums: List[int]) -> List[int]:
         """
         Approach: Single Pass
         Time Complexity: O(n)
@@ -36,10 +36,35 @@ class Permutation:
             nums[left + 1:] = nums[left + 1:][::-1]
             return nums
 
+    def get_all_unique(self, nums: List[int]) -> List[List[int]]:
+        """
+        Approach: Back tracking (Recursion)
+        :param nums:
+        :return:
+        """
+        # back tracking function
+        def back_track(nums, path, unique):
+
+            # base case
+            if not nums:
+                unique.append(path)
+
+            for i in range(len(nums)):
+                # skip if it is a duplicate element.
+                if i > 0 and nums[i] == nums[i - 1]:
+                    continue
+                back_track(nums[:i] + nums[i + 1:], path + [nums[i]], unique)
+
+        nums.sort()
+        unique = []
+        back_track(nums, [], unique)
+        return unique
+
 
 if __name__ == "__main__":
 
     permutation = Permutation()
-    print(permutation.get_next_permutation([9, 6, 5, 4, 3, 2, 1]))
-    print(permutation.get_next_permutation([9, 6, 5, 4, 7, 2, 1]))
-    print(permutation.get_next_permutation([1, 2, 4, 5, 7, 8, 9]))
+    print(permutation.get_next([9, 6, 5, 4, 3, 2, 1]))
+    print(permutation.get_next([9, 6, 5, 4, 7, 2, 1]))
+    print(permutation.get_next([1, 2, 4, 5, 7, 8, 9]))
+    print(permutation.get_all_unique([1, 2, 1]))
