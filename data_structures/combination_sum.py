@@ -1,9 +1,9 @@
 from typing import List
 
 
-class Combination:
+class CombinationSum:
 
-    def get_combination_sum(self, candidates: List[int], target: int) -> List[List[int]]:
+    def get_combinations(self, candidates: List[int], target: int) -> List[List[int]]:
         """
         Approach: Back Tracking
         :param candidates:
@@ -34,7 +34,7 @@ class Combination:
                             combinations
                             )
 
-    def get_combination_sum_(self, candidates: List[int], target: int) -> List[List[int]]:
+    def get_combinations_(self, candidates: List[int], target: int) -> List[List[int]]:
         """
         Approach: Dynamic Programming
         :param candidates:
@@ -52,11 +52,34 @@ class Combination:
                         cache[tar].append(combination + [candidate])
         return cache[target] if target in cache else []
 
+    def get_unique_combinations(self, candidates: List[int], target: int) -> List[List[int]]:
+        # validations
+        if not candidates or min(candidates) > target:
+            return []
+        candidates.sort()
+        combinations = []
+        self.back_track_unique(candidates, 0, target, [], combinations)
+        return combinations
+
+    def back_track_unique(self, candidates: List[int], index: int, target: int, path: List[int], combinations: List[List[int]]):
+        # base case
+        if target == 0 and path not in combinations:
+            combinations.append(path)
+            return  # back track
+        if target < 0 or index >= len(candidates):
+            return  # back track
+
+        for i in range(index, len(candidates)):
+            if i > index and candidates[i] == candidates[i - 1]:
+                continue
+            self.back_track_unique(candidates, i + 1, target - candidates[i], path + [candidates[i]], combinations)
+
 
 if __name__ == "__main__":
-    combinations = Combination()
-    print(combinations.get_combination_sum([2, 3, 6, 7], 7))
-    print(combinations.get_combination_sum_([2, 3, 6, 7], 7))
+    combination_sum = CombinationSum()
+    print(combination_sum.get_combinations([2, 3, 6, 7], 7))
+    print(combination_sum.get_combinations_([2, 3, 6, 7], 7))
+    print(combination_sum.get_unique_combinations([10, 1, 2, 7, 6, 1, 5], 8))
 
 
 
