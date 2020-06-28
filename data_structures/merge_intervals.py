@@ -4,6 +4,13 @@ from typing import List
 class Interval:
 
     def merge_overlaps(self, intervals: List[List[int]]) -> List[List[int]]:
+        """
+        Approach: Sorting
+        Time Complexity: O(n log n)
+        Space Complexity: O(1)
+        :param intervals:
+        :return:
+        """
         intervals.sort(key=lambda x: x[0])
         i = 1
         while i < len(intervals):
@@ -15,6 +22,13 @@ class Interval:
         return intervals
 
     def merge_overlaps_(self, intervals: List[List[int]]) -> List[List[int]]:
+        """
+        Approach: Sorting
+        Time Complexity: O(n log n)
+        Space Complexity: O(n)
+        :param intervals:
+        :return:
+        """
         intervals.sort(key=lambda x: x[0])
         output = []
         for interval in intervals:

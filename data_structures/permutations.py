@@ -73,6 +73,30 @@ class Permutation:
         back_track(nums, [], permutations)
         return permutations
 
+    def next_permutation(self, k: int, n: int) -> List[int]:
+        """
+        Approach: Factorial Number System.
+        Time Complexity: O(n^2)
+        Space Complexity: O(N)
+        :param k:
+        :param n:
+        :return:
+        """
+        factorials, nums, k, output = [1], ["1"], k - 1, []
+        # generate the factorial representation for n.
+        for i in range(1, n):
+            factorials.append(factorials[i - 1] * i)
+            nums.append(str(i + 1))
+
+        # extract the factorial representation to permutation.
+        for i in range(n - 1, -1, -1):
+            index = k // factorials[i]
+            k = k - index * factorials[i]
+
+            output.append(nums[index])
+            del nums[index]
+        return "".join(output)
+
 
 if __name__ == "__main__":
 
@@ -82,3 +106,4 @@ if __name__ == "__main__":
     print(permutation.get_next([1, 2, 4, 5, 7, 8, 9]))
     print(permutation.get_all_unique_with_duplicates([1, 2, 1]))
     print(permutation.get_all_from_distinct([6, 7, 9]))
+    print(permutation.next_permutation(3, 3))
