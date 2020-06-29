@@ -71,6 +71,25 @@ class Grid:
                     obstacle_grid[col][row] = 0
         return obstacle_grid[m - 1][n - 1]
 
+    def get_minimum_path_sum(self, num_grid: List[List[int]]) -> int:
+        """
+        Approach: DP with no extra space
+        Time Complexity: O(n * m)
+        Space Complexity: O(1)
+        :param num_grid:
+        :return:
+        """
+        columns, rows = len(num_grid), len(num_grid[0])
+        for col in range(columns - 1, -1, -1):
+            for row in range(rows - 1, -1, -1):
+                if col == columns - 1 and row != rows - 1:
+                    num_grid[col][row] = num_grid[col][row] + num_grid[col][row + 1]
+                elif row == rows - 1 and col != columns - 1:
+                    num_grid[col][row] = num_grid[col][row] + num_grid[col + 1][row]
+                elif col != columns - 1 and row != rows - 1:
+                    num_grid[col][row] = num_grid[col][row] + min(num_grid[col + 1][row], num_grid[col][row + 1])
+        return num_grid[0][0]
+
 
 if __name__ == "__main__":
     grid = Grid()
@@ -82,5 +101,12 @@ if __name__ == "__main__":
             [0, 0, 0],
             [0, 1, 0],
             [0, 0, 0]
+        ]
+    ))
+    print(grid.get_minimum_path_sum(
+        [
+            [1, 3, 1],
+            [1, 5, 1],
+            [4, 2, 1]
         ]
     ))
