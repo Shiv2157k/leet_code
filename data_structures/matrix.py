@@ -45,6 +45,32 @@ class Matrix:
                 matrix[col][0] = 0
         return matrix
 
+    def search_element(self, matrix: List[List[int]], target: int) -> bool:
+        """
+        Approach: Binary Search
+        Time Complexity: O(log(mn))
+        Space Complexity: O(1)
+        :param matrix:
+        :param target
+        :return:
+        """
+        m = len(matrix)
+        if m == 0:
+            return False
+        n = len(matrix[0])
+        left, right = 0, (m * n) - 1
+        while left <= right:
+            pivot_index = (left + right) // 2
+            pivot_element = matrix[pivot_index // n][pivot_index % n]
+            if target == pivot_element:
+                return True
+            else:
+                if target > pivot_element:
+                    left = pivot_index + 1
+                else:
+                    right = pivot_index - 1
+        return False
+
 
 if __name__ == "__main__":
     matrix_board = Matrix()
@@ -62,3 +88,15 @@ if __name__ == "__main__":
             [1, 3, 1, 5]
         ]
     ))
+    print(matrix_board.search_element(
+        [
+            [1, 3, 5, 7],
+            [10, 11, 16, 20],
+            [23, 30, 34, 50]
+        ], 3))
+    print(matrix_board.search_element(
+        [
+            [1, 3, 5, 7],
+            [10, 11, 16, 20],
+            [23, 30, 34, 50]
+        ], 25))
