@@ -1,7 +1,7 @@
 from typing import List
 
 
-class Word:
+class WordSearch:
 
     def exist(self, board: List[List[str]], word: str) -> bool:
         """
@@ -86,29 +86,29 @@ class Word:
 
 
 if __name__ == "__main__":
-    word = Word()
-    print(word.exist(
+    word_search = WordSearch()
+    print(word_search.exist(
         [
             ["A", "B", "C", "E"],
             ["S", "F", "C", "S"],
             ["A", "D", "E", "E"]
         ], "ABCCED"
     ))
-    print(word.exist(
+    print(word_search.exist(
         [
             ["A", "B", "C", "E"],
             ["S", "F", "C", "S"],
             ["A", "D", "E", "E"]
         ], "ABCED"
     ))
-    print(word.exist_(
+    print(word_search.exist_(
         [
             ["A", "B", "C", "E"],
             ["S", "F", "C", "S"],
             ["A", "D", "E", "E"]
         ], "ABCCED"
     ))
-    print(word.exist_(
+    print(word_search.exist_(
         [
             ["A", "B", "C", "E"],
             ["S", "F", "C", "S"],
