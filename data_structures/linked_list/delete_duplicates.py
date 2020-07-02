@@ -16,3 +16,18 @@ class DeleteDuplicates:
             else:
                 curr_node = curr_node.next
         return head
+
+    def delete_duplicates_II(self, head: ListNode) -> ListNode:
+
+        new_head = dummy = ListNode(0)
+        new_head.next = head
+        while head and head.next:
+            if head.val == head.next.val:
+                while head and head.next and head.val == head.next.val:
+                    head = head.next
+                head = head.next
+                dummy.next = head
+            else:
+                dummy = dummy.next
+                head = head.next
+        return new_head.next
