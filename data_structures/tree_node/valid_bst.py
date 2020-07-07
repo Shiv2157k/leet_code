@@ -26,6 +26,7 @@ class BinarySearchTree:
                 return False
             if not helper(node.right, val, upper):
                 return False
+            return True
         return helper(root)
 
     def is_valid_(self, root: TreeNode) -> bool:
