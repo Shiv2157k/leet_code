@@ -53,3 +53,35 @@ class ConstructBST:
         # build hash mapping for in_order values and index
         index_map = {val: idx for idx, val in enumerate(in_order)}
         return helper()
+
+    def from_in_order_and_post_order(self, post_order: List[int], in_order: List[int]) -> TreeNode:
+        """
+        Approach: Recursion
+        Time Complexity: O(N)
+        Space Complexity: O(N)
+        :param post_order:
+        :param in_order:
+        :return:
+        """
+
+        def helper(in_left=0, in_right=len(in_order) - 1):
+
+            # if no more sub trees return none
+            if in_left > in_right:
+                return None
+
+            # grab the root from last index of post order
+            val = post_order.pop()
+            # build the bst
+            root = TreeNode(val)
+
+            # split the left and right subtree
+            index = in_order_map[val]
+
+            # continue building left and right sub trees
+            root.right = helper(index + 1, in_right)
+            root.left = helper(in_left, index - 1)
+            return root
+
+        in_order_map = {val:idx for idx, val in enumerate(in_order)}
+        return helper
