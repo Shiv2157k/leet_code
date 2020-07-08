@@ -62,7 +62,7 @@ class ZigZag:
         if root is None:
             return []
 
-        from collection import deque as dq
+        from collections import deque as dq
 
         order = []
 
