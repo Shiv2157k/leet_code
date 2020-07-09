@@ -1,3 +1,6 @@
+from typing import List
+
+
 class TreeNode:
     def __init__(self, val, left=None, right=None):
         self.val = val
@@ -53,3 +56,31 @@ class PathSum:
             if root.right:
                 stack.append((root.right, curr_sum - root.right.val))
         return False
+
+    def recurse_tree(self, node: TreeNode, remaining_sum: int, path_nodes: List[int], paths_list: List[int]):
+
+        if not node:
+            return None
+
+        path_nodes.append(node.val)
+
+        if remaining_sum == node.val and not node.left and not node.right:
+            paths_list.append(list(path_nodes))
+        else:
+            self.recurse_tree(node.left, remaining_sum - node.val, path_nodes, paths_list)
+            self.recurse_tree(node.right, remaining_sum - node.val, path_nodes, paths_list)
+
+        path_nodes.pop()
+
+    def get_path_sums(self, root: TreeNode, target: int) -> List[List[int]]:
+        """
+        Approach: DFS
+        Time Complexity: O(N^2)
+        Space Complexity: O(N)
+        :param root:
+        :param target:
+        :return:
+        """
+        paths_list = []
+        self.recurse_tree(root, target, [], paths_list)
+        return paths_list
