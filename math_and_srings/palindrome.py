@@ -1,6 +1,42 @@
+from typing import List
 
 
 class Palindrome:
+
+    def partition_palindrome(self, s: str) -> List[List[str]]:
+        """
+        Approach: Recursion with Memoization.
+        :param s:
+        :return:
+        """
+        if not s:
+            return []
+        cache = {}
+
+        def is_pal(string):
+            left, right = 0, len(string) - 1
+            while left < right:
+                if string[left] != string[right]:
+                    return False
+                left += 1
+                right -= 1
+            return True
+
+        def helper(string):
+            if string in cache:
+                return cache[string]
+            res = []
+            for i in range(len(string)):
+                if is_pal(string[:i + 1]):
+                    if i == len(string) - 1:
+                        res.append([string[: i + 1]])
+                    else:
+                        subs = helper(string[i + 1:])
+                        for sub in subs:
+                            res.append([string[:i + 1]] + sub)
+            cache[string] = res
+            return res
+        return helper(s)
 
     def is_palindrome(self, num: int) -> bool:
         """
@@ -62,3 +98,4 @@ if __name__ == "__main__":
     pal = Palindrome()
     print(pal.is_palindrome(112111))
     print(pal.get_longest_palindrome_substring("ababbdbdbbdbdbbbdbbddsljef"))
+    print(pal.partition_palindrome("aab"))
