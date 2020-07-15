@@ -81,6 +81,7 @@ if __name__ == "__main__":
     single = Single()
     print(single.get_number_([4, 5, 6, 4, 5, 6, 9, 10, 10, 11, 11]))
     print(single.get_number([4, 5, 6, 4, 5, 6, 9, 10, 10, 11, 11]))
+    print(single.get_number_([4, 1, 2, 1, 2]))
     print(single.number___ii([1, 1, 1, 5, 5, 5, 99]))
     print(single.number__ii([1, 1, 1, 5, 5, 5, 99]))
     print(single.number_ii([1, 1, 1, 5, 5, 5, 99]))
