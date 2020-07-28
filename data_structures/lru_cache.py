@@ -25,6 +25,12 @@ class LRUCache_(OrderedDict):
         return self[key]
 
     def put(self, key, value):
+        """
+        Creates or updates they key value pair.
+        :param key:
+        :param value:
+        :return:
+        """
         if key in self:
             self.move_to_end(key)
         # update the value
@@ -56,8 +62,8 @@ class LRUCache():
         :param node:
         :return:
         """
-        node.prev = self.head.next
-        node.next = self.head
+        node.prev = self.head
+        node.next = self.head.next
 
         self.head.next.prev = node
         self.head.next = node
