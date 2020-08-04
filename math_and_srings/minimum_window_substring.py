@@ -5,7 +5,9 @@ class Window:
 
     def get_minimum_window_substring(self, string: str, substring: str) -> str:
         """
-        Approach: Sliding Window
+        Approach: Optimized Sliding Window
+        Time Complexity: O(|S| + |T|)
+        Space Complexity: O(|S| + |T|)
         :param string:
         :param substring:
         :return:
