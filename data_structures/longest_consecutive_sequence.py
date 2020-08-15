@@ -68,3 +68,4 @@ if __name__ == "__main__":
     sequence = Sequence()
     print(sequence.find_longest_consecutive__([100, 200, 3, 4, 2, 1]))
     print(sequence.find_longest_consecutive_([100, 200, 3, 4, 2, 1]))
+    print(sequence.find_longest_consecutive([100, 200, 3, 4, 2, 1]))
