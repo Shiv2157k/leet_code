@@ -23,7 +23,7 @@ class Queens:
         def remove_queen_(row: int, col: int) -> None:
             rows[col] = 0
             hills[row - col] = 0
-            hills[row + col] = 0
+            dales[row + col] = 0
 
         def back_track_(row=0, count=0) -> int:
             for col in range(n):
