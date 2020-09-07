@@ -35,6 +35,14 @@ class SingleNumber:
         approach: by drawing truth table for 00 -> 01 -> 10 -> 00
                   l' = ~h & (l ^ i)
                   h' = ~l' & (h ^ i)
+        [4, 4, 4, 2]
+            1   0   0
+            1   0   0
+            1   0   0
+            0   1   0
+        ----------------
+            3%3 1%3 0%3
+            0   1   0 -> 2
         Time Complexity: O(N)
         Space Cmplexity: O(1)
         :param nums:
