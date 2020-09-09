@@ -1,5 +1,5 @@
 class ListNode:
-    def __init__(self,val: int, next: None or int):
+    def __init__(self, val: int, next: None or int):
         self.val = val
         self.next = next
 
