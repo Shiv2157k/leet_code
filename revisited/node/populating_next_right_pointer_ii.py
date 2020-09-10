@@ -96,7 +96,7 @@ class Trees:
             for i in range(size):
                 node = queue.popleft()
 
-                if i == size - 1:
+                if i < size - 1:
                     node.next = queue[0]
 
                 if node.left:
