@@ -120,9 +120,6 @@ class Converter:
         :return:
         """
 
-        if not head:
-            return head
-
         size = self.find_size(head)
 
         def convert(left, right):
