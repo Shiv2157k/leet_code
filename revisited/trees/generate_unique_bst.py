@@ -40,4 +40,4 @@ class BinaryTree:
                 all_trees.append(curr_tree)
             return all_trees
 
-        return trees(1, n ) if n else []
+        return trees(1, n) if n else []
