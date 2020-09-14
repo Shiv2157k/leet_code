@@ -52,7 +52,7 @@ class IPAddress:
                     # place the dot.
                     segments.append(segment)
                     # if all the three dots are placed.
-                    if len(segment) == dots - 1:
+                    if dots - 1 == 0:
                         # add solution to the output.
                         update(curr_pos)
                     else:
@@ -66,3 +66,9 @@ class IPAddress:
 
         back_track()
         return addresses
+
+
+if __name__ == "__main__":
+
+    ip_address = IPAddress()
+    print(ip_address.get_all_valid("25525511135"))
