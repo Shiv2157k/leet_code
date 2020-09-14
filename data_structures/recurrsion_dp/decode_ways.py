@@ -41,7 +41,7 @@ class Decode:
 
     def get_number_of_ways_(self, s: str) -> int:
         """
-        Approach: Iteration with dp
+        Approach: Iteration with recursion_memoization_dp
         Time Complexity: O(N)
         Space Complexity: O(N)
         :param s:

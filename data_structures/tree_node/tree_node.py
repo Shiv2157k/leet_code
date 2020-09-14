@@ -25,7 +25,7 @@ class SameTree:
 
     def is_same(self, tree1: TreeNode, tree2: TreeNode) -> bool:
         """
-        Approach: Using dp with python deque.
+        Approach: Using recursion_memoization_dp with python deque.
         :param tree1:
         :param tree2:
         :return:

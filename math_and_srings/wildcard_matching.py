@@ -48,7 +48,7 @@ class PatternMatcher:
         dp = [[False] * (p_len + 1) for _ in range(s_len + 1)]
 
         # if the initial characters in the pattern are *
-        # mark the dp[0][i] to True
+        # mark the recursion_memoization_dp[0][i] to True
         for i in range(1, p_len + 1):
             if pattern[i - 1] != "*":
                 break
