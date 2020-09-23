@@ -4,6 +4,43 @@ from pprint import pprint
 
 class Queens:
 
+    def get_all_distinct_solutions(self, n: int) -> int:
+        """
+        Approach: Back tracking
+        Time Complexity: O(N!)
+        Space Complexity: O(N)
+        :param n:
+        :return:
+        """
+        def could_place(row: int, col: int) -> bool:
+            return not (cols[col] + hills[row + col] + dales[row - col])
+
+        def place_queen(row: int, col: int):
+            cols[col] = 1
+            hills[row + col] = 1
+            dales[row - col] = 1
+
+        def remove_queen(row: int, col: int):
+            cols[col] = 0
+            hills[row + col] = 0
+            dales[row - col] = 0
+
+        def back_track(row: int = 0, count: int = 0):
+            for col in range(n):
+                if could_place(row, col):
+                    place_queen(row, col)
+                    if row + 1 == n:
+                        count += 1
+                    else:
+                        count = back_track(row + 1, count)
+                    remove_queen(row, col)
+            return count
+
+        cols = [0] * n
+        hills = [0] * (2 * n - 1)
+        dales = [0] * (2 * n - 1)
+        return back_track()
+
     def place_n_(self, n: int) -> List[List[str]]:
         """
         Approach: Back Tracking
@@ -129,3 +166,4 @@ if __name__ == "__main__":
     n_queens = Queens()
     pprint(n_queens.place_n(4))
     pprint(n_queens.place_n_(4))
+    print(n_queens.get_all_distinct_solutions(4))
