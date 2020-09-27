@@ -27,7 +27,7 @@ class TextJustification:
             # keep incrementing right index until you can
             # loop through and decrement space left until it reaches 0
             while right_idx < n and space_left - len(words[right_idx]) - 1 >= 0:
-                space_left -= len(words[right_idx]) - 1
+                space_left = space_left - len(words[right_idx]) - 1
                 right_idx += 1
 
             # calculate the line length
@@ -44,7 +44,7 @@ class TextJustification:
                 # number of space that needs to be added in each space section.
                 # space_left - total number of spaces left
                 # line length - how many words we are taking in on a line
-                space_divider = (space_left + line_length - 1) // space_sections
+                space_divider = (space_left + space_sections) // space_sections
                 extra_space = space_left % space_sections
                 line = ""
 
