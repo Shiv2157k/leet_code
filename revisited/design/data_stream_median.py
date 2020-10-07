@@ -5,6 +5,8 @@ class DataStream:
     """
     Using Priority Queue
     heapq data structure
+    Time Complexity: O(log N)
+    Space Complexity: O(N)
     """
 
     def __init__(self):
