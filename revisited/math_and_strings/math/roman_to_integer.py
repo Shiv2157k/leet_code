@@ -16,6 +16,27 @@ class Roman:
         "I": 1
     }
 
+    def to_integer_(self, string: str) -> int:
+        """
+        Approach: Left to Right improvised
+        Time Complexity: O(1)
+        Space Complexity: O(1)
+        :param string:
+        :return:
+        """
+
+        total = 0
+        i = 0
+
+        while i < len(string):
+            if i < len(string) - 1 and string[i: i + 2] in self.converter:
+                total += self.converter.get(string[i: i + 2])
+                i += 2
+            else:
+                total += self.converter.get(string[i])
+                i += 1
+        return total
+
     def to_integer(self, string: str) -> int:
         """
         Approach: Right to Left Pass
@@ -38,3 +59,4 @@ class Roman:
 if __name__ == "__main__":
     roman = Roman()
     print(roman.to_integer("MCMXCIV"))
+    print(roman.to_integer_("MCMXCIV"))
