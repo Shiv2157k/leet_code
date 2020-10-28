@@ -48,9 +48,32 @@ class Permutations:
         back_track()
         return output
 
+    def permute_unique(self, nums: List[int]) -> List[List[int]]:
+        """
+        Approach: Back Tracking
+        Time Complexity: O(N!)
+        Space Complexity: O(N!)
+        :param nums:
+        :return:
+        """
+        def back_track(nums: List[int], path: List[int], output: List[List[int]]):
+            if not nums:
+                output.append(path)
+            for idx in range(len(nums)):
+                if idx > 0 and nums[idx] == nums[idx - 1]:
+                    continue
+                back_track(nums[:idx] + nums[idx + 1:], path + [nums[idx]], output)
+
+        output = []
+        nums.sort()
+        back_track(nums, [], output)
+        return output
+
 
 if __name__ == "__main__":
     permutations = Permutations()
     permutationss = Permutations()
+    permutation_uq = Permutations()
+    print(permutation_uq.permute_unique([1, 2, 1]))
     print(permutations.permute([1, 2, 3]))
     print(permutationss.permutee([1, 2, 3]))
