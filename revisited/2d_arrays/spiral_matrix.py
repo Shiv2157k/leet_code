@@ -1,7 +1,32 @@
 from typing import List
+from pprint import pprint
 
 
 class Matrix:
+
+    def build_spiral_matrix(self, n: int) -> List[List[int]]:
+        """
+        Approach: Simulation
+        Time Complexity: O(N)
+        Space Complexity: O(N)
+        :param n:
+        :return:
+        """
+        seen = [[False] * n for _ in range(n)]
+        dr, dc = [0, 1, 0, -1], [1, 0, -1, 0]
+        spiral = [[None] * n for _ in range(n)]
+        row = col = di = 0
+
+        for i in range(1, (n * n) + 1):
+            spiral[row][col] = i
+            seen[row][col] = True
+            cr, cc = row + dr[di], col + dc[di]
+            if 0 <= cr < n and 0 <= cc < n and not seen[cr][cc]:
+                row, col = cr, cc
+            else:
+                di = (di + 1) % 4
+                row, col = row + dr[di], col + dc[di]
+        return spiral
 
     def gen_spiral(self, matrix: List[List[int]]) -> List[int]:
         """
@@ -42,7 +67,6 @@ class Matrix:
             c1 += 1
             c2 -= 1
         return spiral
-
 
     def generate_spiral(self, matrix: List[List[int]]) -> List[int]:
         """
@@ -110,3 +134,6 @@ if __name__ == "__main__":
             [9, 10, 11, 12]
         ]
     ))
+    pprint(spiral_matrix.build_spiral_matrix(3))
+    pprint(spiral_matrix.build_spiral_matrix(2))
+    pprint(spiral_matrix.build_spiral_matrix(4))
