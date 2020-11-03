@@ -15,6 +15,7 @@ class LinkedList:
         :return:
         """
         new_head = dummy = ListNode(0)
+        new_head.next = head
 
         while head and head.next:
             if head.val == head.next.val:
@@ -24,6 +25,6 @@ class LinkedList:
                 dummy.next = head
             else:
                 head = head.next
-                dummy = head.next
+                dummy = dummy.next
         return new_head.next
 
