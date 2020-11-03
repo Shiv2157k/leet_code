@@ -3,6 +3,21 @@ from typing import List
 
 class GrayCode:
 
+    def generates(self, n: int) -> List[int]:
+        """
+        Approach: Bit Manipulation
+        Time Complexity: O(N)
+        Space Complexity: O(N)
+        Formulae: i xor (i >> 1)
+        :param n:
+        :return:
+        """
+        gray = []
+        # 2^^n ~ 1 << n
+        for num in range(1 << n):
+            gray.append(num ^ (num >> 1))
+        return gray
+
     def generate(self, n: int) -> List[int]:
         """
         Approach: Bit Manipulation
@@ -33,3 +48,4 @@ class GrayCode:
 if __name__ == "__main__":
     gray_code = GrayCode()
     print(gray_code.generate(2))
+    print(gray_code.generates(2))
