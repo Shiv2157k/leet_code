@@ -3,6 +3,21 @@ from typing import List
 
 class Subsets:
 
+    def generated(self, nums: List[int]) -> List[List[int]]:
+        """
+        Approach: Lexographic Binary Sorted
+        Time Complexity: O(N * 2^N)
+        Space Complexity: O(N * 2^N)
+        :param nums:
+        :return:
+        """
+        n = len(nums)
+        output = []
+        for i in range(2**n):
+            bitmask = bin(i | 1 << n)[3:]
+            output.append([nums[j] for j in range(n) if bitmask[j] == "1"])
+        return output
+
     def generate(self, nums: List[int]) -> List[List[int]]:
         """
         Approach: Lexographic Binary Sorted
@@ -58,6 +73,7 @@ class Subsets:
 
 if __name__ == "__main__":
     subsets = Subsets()
+    print(subsets.generated([1, 2, 3]))
     print(subsets.generate([1, 2, 3]))
     print(subsets.generate__([1, 2, 3]))
     print(subsets.generate_([1, 2, 3]))
