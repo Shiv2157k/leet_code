@@ -34,7 +34,7 @@ class Grid:
 
     def get_unique_paths__(self, m: int, n: int) -> int:
         """
-        Approach: Using math factorial.
+        Approach: Using math_and_string factorial.
         Time Complexity: O((M + N)(log(M + N)log log(M + N))^2)
         Space Complexity: O(1)
         :param m:
