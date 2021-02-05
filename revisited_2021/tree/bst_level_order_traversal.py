@@ -56,7 +56,7 @@ class Tree:
             for node in curr_level:
                 levels[-1].append(node.val)
                 if node.left:
-                    next_level.append([node.left])
+                    next_level.append(node.left)
                 if node.right:
-                    next_level.append([node.right])
-            return levels[::-1]
+                    next_level.append(node.right)
+        return levels[::-1]
