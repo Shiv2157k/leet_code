@@ -2,6 +2,25 @@
 
 class String:
 
+    def pal_rec(self, s: str, l: int, r: int):
+        if l == r:
+            return True
+        if s[l] != s[r]:
+            return False
+        if l < r + 1:
+            return self.pal_rec(s, s + 1, r - 1)
+        return True
+
+    def is_pal(self, s: str) -> bool:
+        """
+        Approach: Recursion
+        :param s:
+        :return:
+        """
+        if not s:
+            return True
+        return self.pal_rec(s, 0, len(s) - 1)
+
     def is_palindrome(self, s: str) -> bool:
         """
         Approach: Two Pointers
