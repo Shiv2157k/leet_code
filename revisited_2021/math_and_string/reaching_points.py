@@ -4,6 +4,26 @@ class Points:
 
     def is_reaching(self, sx: int, sy: int, tx: int, ty: int) -> bool:
         """
+        Approach: Work Back words
+        T: O(max(tx, ty))
+        S: O(1)
+        :param sx:
+        :param sy:
+        :param tx:
+        :param ty:
+        :return:
+        """
+        while tx >= sx and ty >= sy:
+            if sx == tx and sy == ty:
+                return True
+            if tx > ty:
+                tx -= ty
+            else:
+                ty -= tx
+        return False
+
+    def is_reaching(self, sx: int, sy: int, tx: int, ty: int) -> bool:
+        """
         Approach: Work Backwards using modulo
         Time Complexity: O(log(max(tx, ty)))
         Space Complexity: O(1)
