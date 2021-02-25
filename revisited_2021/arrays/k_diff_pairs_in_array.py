@@ -40,7 +40,7 @@ class Array:
         counter = Counter(nums)
         result = 0
         for key in counter:
-            if key + k in counter:
+            if k > 0 and key + k in counter:
                 result += 1
             elif k == 0 and counter[key] > 1:
                 result += 1
