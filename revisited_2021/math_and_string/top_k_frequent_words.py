@@ -16,6 +16,7 @@ class Words:
         # validation
         if not words or k <= 0:
             return []
+        # store the frequency of words
         word_frequency = dict()
         for word in words:
             if word in word_frequency:
@@ -23,6 +24,7 @@ class Words:
             else:
                 word_frequency[word] = 1
 
+        # push it into heap queue
         heap = []
         for word, freq in word_frequency.items():
             heapq.heappush(heap, (-freq, word))
