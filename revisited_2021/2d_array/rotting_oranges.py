@@ -4,7 +4,7 @@ from collections import deque
 
 class Oranges:
 
-    def all_rotten_minutes(self, grid: List[List[int]]) -> int:
+    def minutes_took_for_oranges_to_rot(self, grid: List[List[int]]) -> int:
         """
         Approach: BFS
         Time Complexity: O(N)
@@ -51,7 +51,7 @@ class Oranges:
 
 if __name__ == "__main__":
     oranges = Oranges()
-    print(oranges.all_rotten_minutes(
+    print(oranges.minutes_took_for_oranges_to_rot(
         [
             [2, 1, 1],
             [1, 1, 0],
@@ -59,7 +59,7 @@ if __name__ == "__main__":
         ]
     ))
 
-    print(oranges.all_rotten_minutes(
+    print(oranges.minutes_took_for_oranges_to_rot(
         [
             [2, 1, 1],
             [0, 1, 1],
