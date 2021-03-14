@@ -21,6 +21,8 @@ class Word:
 
         for idx, char in enumerate(paragraph):
             if char.isalnum():
+                # consume characters in a word onto
+                # the word buffer
                 word_buffer.append(char.lower())
                 # skip until you buffer a full word
                 # or until you reach end of the paragraph
