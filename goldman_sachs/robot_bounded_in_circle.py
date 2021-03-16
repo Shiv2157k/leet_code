@@ -10,7 +10,7 @@ class Robot:
         """
         # starts from origin
         x = y = 0
-        # intially faces north or straight
+        # initially faces north or straight
         route = 0
         # directions 0 = north, 1 = east, 2 = south, 3 = west
         directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
