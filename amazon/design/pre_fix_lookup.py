@@ -24,7 +24,15 @@ class TrieNode:
 
 
 class Dictionary:
-
+    """
+    Approach: Using Trie DS
+    Time Complexity:
+    P - prefix length
+    n - number of words
+    Top 1 Search: O(P)
+    Top K Search: O(P + n log K)
+    Adding: (p * log n)
+    """
     def __init__(self):
         self.trie = TrieNode()
 
