@@ -19,7 +19,7 @@ class Paragraph:
             - O(N) to build a hash map for counting frequency of each
               unique word.
             - O(M) for building word set our of banned word list.
-            - over all O(N + M).
+            - over all O(N + M)
         :param para:
         :param banned:
         :return:
