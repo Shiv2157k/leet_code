@@ -9,7 +9,6 @@ class TicTacToe:
         self.col = [0] * n
         self.diagonal = [0] * 2
 
-
     def move(self, row: int, col: int, player: int) -> int:
 
         if player == 1:

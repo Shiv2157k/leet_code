@@ -27,7 +27,7 @@ class KeyPad:
 
 
 if __name__ == "__main__":
-    keypad =KeyPad()
+    keypad = KeyPad()
     print(keypad.slowest_key(
         [9, 29, 49, 50], "cbcd"
     ))
