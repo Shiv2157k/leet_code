@@ -20,8 +20,10 @@ class Square:
             for col in range(1, cols + 1):
                 temp = dp[col]
                 if board[row - 1][col - 1] == "1":
-                    dp[col] = min(dp[col], prev, dp[col - 1]) + 1
+                    dp[col] = min(min(dp[col], prev), dp[col - 1]) + 1
                     max_len = max(max_len, dp[col])
+                else:
+                    dp[col] = 0
                 prev = temp
         return max_len**2
 
