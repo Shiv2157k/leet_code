@@ -1,5 +1,3 @@
-
-
 class Roman:
 
     converter = {"M": 1000, "D": 500, "C": 100, "L": 50,
@@ -21,3 +19,11 @@ class Roman:
             else:
                 total += self.converter.get(s[i])
         return total
+
+
+if __name__ == "__main__":
+    roman = Roman()
+    print(roman.to_integer("IX"))
+    print(roman.to_integer("III"))
+    print(roman.to_integer("MMCX"))
+    print(roman.to_integer("MCMXCIV"))
