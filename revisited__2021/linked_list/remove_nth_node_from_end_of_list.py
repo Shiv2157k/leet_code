@@ -7,6 +7,36 @@ class ListNode:
 
 class LinkedList:
 
+    def remove_nth_node_(self, head: "ListNode", n: int) -> "ListNode":
+        """
+        Approach: Two Pass
+        Time Complexity: O(N)
+        Space Complexity: O(1)
+        :param head:
+        :param n:
+        :return:
+        """
+
+        dummy = ListNode(0)
+        dummy.next = head
+
+        first = head
+        length = 0
+
+        while first:
+            first = first.next
+            length += 1
+
+        length -= n
+        first = dummy
+
+        while length:
+            length -= 1
+            first = first.next
+
+        first.next = first.next.next
+        return dummy.next
+
     def remove_nth_node(self, head: "ListNode", n: int) -> "ListNode":
         """
         Approach: Single Pass
