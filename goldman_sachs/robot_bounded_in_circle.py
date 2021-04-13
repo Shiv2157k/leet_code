@@ -16,9 +16,9 @@ class Robot:
         directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
 
         for instruction in instructions:
-            if instruction == "L": # west
+            if instruction == "L":  # west
                 route = (route + 3) % 4
-            elif instructions == "R": # east
+            elif instructions == "R":  # east
                 route = (route + 1) % 4
             else:
                 x += directions[route][0]
