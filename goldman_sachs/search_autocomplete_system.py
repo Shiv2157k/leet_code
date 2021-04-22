@@ -17,14 +17,18 @@ class Trie:
     def insert(self, sentence, time):
         curr_node = self.root
         for char in sentence:
-            if char not in curr_node.children:
-                curr_node.children[char] = TrieNode()
+            curr_node.children[char] = curr_node.children.get(char, TrieNode())
             curr_node = curr_node.children[char]
         curr_node.end = True
         curr_node.count -= time
 
 
 class AutoCompleteSystem:
+    """
+    AutoCompleteSystem - O(k * l)
+    l - sentences
+    k - average length
+    """
 
     def __init__(self, sentences: List[str], times: List[int]):
         self.trie = Trie()
@@ -51,6 +55,7 @@ class AutoCompleteSystem:
 
     def input(self, c: str) -> List[str]:
         """
+        Time Complexity: O(p + q + m log m)
         Searches the input.
         :param c:
         :return:
