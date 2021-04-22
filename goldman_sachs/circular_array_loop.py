@@ -34,7 +34,7 @@ class Array:
             # mark all the visited nodes
             slow = i
             while self.__next(nums, slow, direction) != -1:
-                nums[slow], slow = 0, self.__next(nums, slow, direction)
+                nums[slow] = 0
         return False
 
     def __next(self, nums, index, direction) -> int:
