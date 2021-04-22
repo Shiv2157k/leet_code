@@ -1,5 +1,3 @@
-
-
 class ReachingPoints:
 
     def reached(self, sx: int, sy: int, tx: int, ty: int) -> bool:
@@ -15,18 +13,19 @@ class ReachingPoints:
         """
 
         while tx >= sx and ty >= sy:
-            if tx == ty:
-                break
-            elif tx > ty:
+
+            if tx > ty:  # x + y, y
                 if ty > sy:
                     tx %= ty
                 else:
                     return (tx - sx) % ty == 0
-            else: # ty > tx
+            elif ty > tx:  # x, y + x
                 if tx > sx:
                     ty %= tx
                 else:
                     return (ty - sy) % tx == 0
+            else:  # tx == ty
+                break
         return tx == sx and ty == sy
 
 
