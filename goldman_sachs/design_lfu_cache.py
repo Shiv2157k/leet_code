@@ -49,3 +49,54 @@ class LFUCache:
         self.cache[key] = new_node
         self.freq_bucket[1][key] = new_node
         self.min_freq = 1
+
+    def fractionAddition(self, expression: str) -> str:
+
+        if not expression:
+            return "0/1"
+
+        if expression[0] != "-":
+            expression = "+" + expression
+
+        # parsing expression to numerator and denominators
+
+        numerator, denominator = [], []
+        index = 0
+
+        while index < len(expression):
+
+            is_positive = True if expression[index] == "+" else False
+
+            # get numerator
+            index += 1
+            n = 0
+            while expression[index].isdigit():
+                n = n * 10 + int(expression[index])
+                index += 1
+            numerator.append(n if is_positive else -n)
+
+            # get denominator
+            index += 1
+            d = 0
+            while index < len(expression) and expression[index].isdigit():
+                d = d * 10 + int(expression[index])
+                index += 1
+            denominator.append(d)
+
+        common_divisor = 1
+        for integer in denominator:
+            common_divisor *= integer
+
+        for i, (n, d) in enumerate(zip(numerator, denominator)):
+            numerator[i] = n * common_divisor // d
+
+        numerator_sum = 0
+        for n in numerator:
+            numerator_sum += n
+
+        gcd = self.gcd(numerator_sum, common_divisor)
+
+        numerator = numerator_sum // gcd
+        denominator = common_divisor // gcd
+
+        return f"{numerator}/{denominator}"
