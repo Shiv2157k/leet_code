@@ -9,7 +9,7 @@ class Date:
 
         day, month, year = d.split(" ")
         months = ("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
-        return "{}-{:02}-{:>02}".format(year, months.index(month) + 1, day[:-2])
+        return "{}-{:02}-{:0>2}".format(year, months.index(month) + 1, day[:-2])
 
 
 if __name__ == "__main__":
